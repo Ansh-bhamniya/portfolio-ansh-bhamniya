@@ -12,7 +12,7 @@ const EXPERIENCE_GRADIENT_BY_SLUG: Record<string, ExperienceGradientVariant> = {
   railse: 'railse-green',
   techspr: 'techspr-blue',
   dhadkan: 'dhadkan-purple',
-  quddle: 'quddle-indigo',
+  quddle: 'quddle-coral',
 }
 
 const EXPERIENCE_SECTION_GRID = `
@@ -94,6 +94,7 @@ export function Features() {
               imageSrc={exp.imgSrc}
               href={`/experience/${exp.slug}`}
               websiteUrl={exp.websiteUrl}
+              highlights={exp.highlights}
               cardClassName="bg-transparent"
               backgroundNode={
                 gradientVariant ? (

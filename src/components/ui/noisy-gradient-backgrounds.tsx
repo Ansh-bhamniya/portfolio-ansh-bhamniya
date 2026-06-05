@@ -190,14 +190,14 @@ export const DHADKAN_PURPLE_GRADIENT: GradientColorStop[] = [
   { color: 'rgba(245,225,238,1)', stop: '100%' },
 ]
 
-/** Indigo → lavender preset for Quddle.ai. */
-export const QUDDLE_INDIGO_GRADIENT: GradientColorStop[] = [
-  { color: 'rgba(42,32,115,1)', stop: '12%' },
-  { color: 'rgba(68,48,155,1)', stop: '28%' },
-  { color: 'rgba(105,75,195,1)', stop: '45%' },
-  { color: 'rgba(155,130,225,1)', stop: '68%' },
-  { color: 'rgba(200,185,240,1)', stop: '85%' },
-  { color: 'rgba(235,228,252,1)', stop: '100%' },
+/** Warm coral → peach preset for Quddle.ai. */
+export const QUDDLE_CORAL_GRADIENT: GradientColorStop[] = [
+  { color: 'rgba(155,45,55,1)', stop: '12%' },
+  { color: 'rgba(195,72,58,1)', stop: '26%' },
+  { color: 'rgba(230,105,78,1)', stop: '42%' },
+  { color: 'rgba(248,150,115,1)', stop: '62%' },
+  { color: 'rgba(255,195,165,1)', stop: '82%' },
+  { color: 'rgba(255,230,215,1)', stop: '100%' },
 ]
 
 const EXPERIENCE_CARD_NOISE = {
@@ -313,7 +313,7 @@ const EXPERIENCE_GRADIENTS = {
   'railse-green': RAILSE_GREEN_GRADIENT,
   'techspr-blue': TECHSPR_BLUE_GRADIENT,
   'dhadkan-purple': DHADKAN_PURPLE_GRADIENT,
-  'quddle-indigo': QUDDLE_INDIGO_GRADIENT,
+  'quddle-coral': QUDDLE_CORAL_GRADIENT,
 } as const
 
 export type ExperienceGradientVariant = keyof typeof EXPERIENCE_GRADIENTS

@@ -5,10 +5,7 @@ import { cn } from "@/lib/utils"
 import { experiences } from "../data/experiences"
 
 function ExperienceExpandable() {
-  const order = ["dhadkan", "techspr", "railse", "quddle"] as const
-  const items = order
-    .map((slug) => experiences.find((e) => e.slug === slug))
-    .filter((e): e is NonNullable<typeof e> => Boolean(e))
+  const items = experiences
 
   return (
     <div className="rounded-2xl bg-white/70 dark:bg-white/[0.03] border border-black/10 dark:border-white/10 overflow-hidden">

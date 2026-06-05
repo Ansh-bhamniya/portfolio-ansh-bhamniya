@@ -10,6 +10,31 @@ import { Link } from 'react-router-dom'
 import { MacTerminalChrome } from '@/components/ui/mac-terminal-chrome'
 import { cn } from '@/lib/utils'
 
+function renderHighlightText(
+  text: string,
+  lightContent: boolean
+) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <span
+          key={`${part}-${index}`}
+          className={cn(
+            'font-semibold',
+            lightContent
+              ? 'text-white'
+              : 'text-stone-900 dark:text-[#E1E0CC]'
+          )}
+        >
+          {part.slice(2, -2)}
+        </span>
+      )
+    }
+
+    return part
+  })
+}
+
 export interface StackingExperienceCardProps {
   index: number
   title: string
@@ -18,6 +43,8 @@ export interface StackingExperienceCardProps {
   imageSrc: string
   href: string
   websiteUrl: string
+  highlights?: string[]
+  summary?: string
   cardClassName: string
   backgroundStyle?: CSSProperties
   backgroundNode?: ReactNode
@@ -37,6 +64,8 @@ export function StackingExperienceCard({
   imageSrc,
   href,
   websiteUrl,
+  highlights = [],
+  summary,
   cardClassName,
   backgroundStyle,
   backgroundNode,
@@ -117,6 +146,18 @@ export function StackingExperienceCard({
                   >
                     {role}
                   </p>
+                  {summary && (
+                    <p
+                      className={cn(
+                        'mt-3 max-w-2xl font-sf text-sm leading-relaxed sm:text-base',
+                        lightContent
+                          ? 'text-white/80'
+                          : 'text-stone-700/90 dark:text-stone-300'
+                      )}
+                    >
+                      {summary}
+                    </p>
+                  )}
                   <p
                     className={cn(
                       'mt-2 font-mono text-xs font-normal uppercase tracking-[0.12em]',
@@ -127,6 +168,33 @@ export function StackingExperienceCard({
                   >
                     {period}
                   </p>
+
+                  {highlights.length > 0 && (
+                    <ul className="mt-5 space-y-2 sm:mt-6">
+                      {highlights.map((item) => (
+                        <li
+                          key={item}
+                          className={cn(
+                            'flex gap-2.5 font-sf text-sm leading-relaxed sm:text-[0.9375rem]',
+                            lightContent
+                              ? 'text-white/85'
+                              : 'text-stone-800/90 dark:text-stone-200'
+                          )}
+                        >
+                          <span
+                            aria-hidden
+                            className={cn(
+                              'mt-[0.55em] h-1 w-1 shrink-0 rounded-full',
+                              lightContent
+                                ? 'bg-white/70'
+                                : 'bg-stone-700/80 dark:bg-stone-300/80'
+                            )}
+                          />
+                          <span>{renderHighlightText(item, lightContent)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 {showDetailLink && (
