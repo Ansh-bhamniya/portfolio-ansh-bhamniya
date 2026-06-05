@@ -100,11 +100,7 @@ export function Features() {
                   <ExperienceCardGradient variant={gradientVariant} />
                 ) : undefined
               }
-              showImage={
-                exp.slug !== 'dhadkan' &&
-                exp.slug !== 'techspr' &&
-                exp.slug !== 'quddle'
-              }
+              showImage={false}
               progress={scrollYProgress}
               range={[i * 0.25, 1]}
               targetScale={targetScale}

@@ -23,6 +23,7 @@ export interface StackingExperienceCardProps {
   backgroundNode?: ReactNode
   lightContent?: boolean
   showImage?: boolean
+  showDetailLink?: boolean
   progress: MotionValue<number>
   range: [number, number]
   targetScale: number
@@ -41,6 +42,7 @@ export function StackingExperienceCard({
   backgroundNode,
   lightContent = false,
   showImage = true,
+  showDetailLink = false,
   progress,
   range,
   targetScale,
@@ -127,21 +129,23 @@ export function StackingExperienceCard({
                   </p>
                 </div>
 
-                <Link
-                  to={href}
-                  className={cn(
-                    'group/link inline-flex w-fit items-center gap-2 font-mono text-sm font-medium tracking-tight transition-colors',
-                    lightContent
-                      ? 'text-white hover:text-white/80'
-                      : 'text-stone-900 hover:text-stone-700 dark:text-[#E1E0CC] dark:hover:text-white/85'
-                  )}
-                >
-                  <span className="text-green-700/90 dark:text-green-400/90">
-                    $
-                  </span>
-                  explain more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                {showDetailLink && (
+                  <Link
+                    to={href}
+                    className={cn(
+                      'group/link inline-flex w-fit items-center gap-2 font-mono text-sm font-medium tracking-tight transition-colors',
+                      lightContent
+                        ? 'text-white hover:text-white/80'
+                        : 'text-stone-900 hover:text-stone-700 dark:text-[#E1E0CC] dark:hover:text-white/85'
+                    )}
+                  >
+                    <span className="text-green-700/90 dark:text-green-400/90">
+                      $
+                    </span>
+                    explain more
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                )}
               </div>
 
               {showImage && (
